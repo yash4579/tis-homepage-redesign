@@ -1,86 +1,222 @@
 # Tulas International School Homepage Redesign
 
-An animated, responsive redesign of the Tulas International School (TIS) homepage. The layout and interactions are new; the brand (crimson, teal and gold palette, bold italic serif headlines), the copy and the school's photos from [tis.edu.in](https://tis.edu.in) are kept.
+A modern, animated, and fully responsive homepage redesign for **Tulas International School (TIS)**. The project retains the school's core visual identity and content while introducing modern interactions, smooth animations, responsive layouts, and conversion-focused calls to action.
 
-- **Live demo:** _add your Vercel URL here after deploying_
-- **Repository:** _add your GitHub URL here after pushing_
+## 🔗 Live Demo
 
-## Tech Stack
+https://tis-school-redesign.vercel.app
 
-- **React 18** with **Vite 5**
-- **Tailwind CSS 3** (brand colours are CSS variables, so dark mode is a token swap)
-- **Framer Motion** for animation
-- **Lucide React** for icons
+## 📦 GitHub Repository
 
-## Features
+https://github.com/yash4579/tis-homepage-redesign
 
-- **Interactive hero:** pick an interest (Dance, Pottery, Karate, Cricket, Basketball, Drawing, Shooting, Science). The photo, the category label, the tinted arch behind it and the "Let's do ___ with Tulas" line all change together. It auto-rotates until the visitor chooses, and not at all for reduced-motion users.
-- **Custom cursor:** an interactive 60 FPS spring-driven follower ring and precision indicator. Scales and glows over links and buttons. Automatically hidden on touch/mobile devices (`pointer: coarse`), restores the native text caret over form fields, and hides when the mouse leaves the window.
-- **Scroll reveal:** `whileInView` with `once: true`, entrance duration 0.5s, staggered with a `delay` prop for cards and sections.
-- **Theme switcher:** animated light/dark toggle. The choice is saved in `localStorage`, defaults to the OS setting and is applied before first paint, so there is no flash.
-- **Scroll progress bar:** `useScroll` + `useSpring`, no React re-renders while scrolling.
-- **Interactive sports section:** click, tap or keyboard-focus one of the 16 sports to swap the large photo.
-- **Responsive navigation:** floating bar with an active-section underline (IntersectionObserver), mobile menu with `aria-expanded`, closes on Escape.
-- **Multi-step enquiry form:** class, state, contact. Per-step validation with inline error messages, focus moves to the first error and to each new step.
-- **Also:** count-up numbers, rankings with sources, personalities carousel with filter tabs, awards, virtual tour banner, parent videos, Google reviews and collaborations marquees (pause on hover), footer map.
-- **Accessibility:** semantic landmarks, skip link, visible focus rings, labelled controls, 44px touch targets, `prefers-reduced-motion` support (Framer Motion `MotionConfig` plus CSS).
+---
 
-## Project Structure
+## ✨ Features
 
-```
+- **Interactive Hero** — Switch between Dance, Pottery, Karate, Cricket, Basketball, Drawing, Shooting, and Science. The image, activity label, background treatment, and headline update together.
+- **Custom Cursor** — Smooth mouse-following ring that reacts to interactive elements and is disabled for touch/coarse pointers.
+- **Scroll-Triggered Reveals** — Sections and cards animate into view using Framer Motion.
+- **Theme Switcher** — Dark/light theme with saved preference and reduced-motion support.
+- **Scroll Progress Bar** — Smooth top-of-page reading progress indicator.
+- **Interactive Sports Showcase** — Select a sport to update the featured image.
+- **Responsive Navigation** — Active-section indicator, animated underline, mobile menu, keyboard support, and Escape-to-close behavior.
+- **Rankings & Recognition** — Ranking cards, campus personalities, awards, and achievements.
+- **Virtual Tour & Collaborations** — Dedicated call-to-action and scrolling collaboration logos.
+- **Parent Stories & Google Reviews** — Video/testimonial content presented in responsive layouts.
+- **Multi-Step Enquiry Form** — Class, state, and contact steps with validation, inline errors, focus management, and success/error states.
+- **Accessibility** — Semantic landmarks, labelled controls, visible focus styles, touch-friendly targets, and `prefers-reduced-motion` support.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React 18**
+- **Vite 5**
+- **Tailwind CSS 3**
+- **Framer Motion**
+- **Lucide React**
+- **JavaScript (ES Modules)**
+
+---
+
+## 📁 Project Structure
+
+```text
 src/
 ├── components/
-│   ├── ui/          Button, Circle, CrossfadeStack, Marquee, Photo, Title
+│   ├── ui/          Reusable UI components
 │   ├── layout/      Navbar, Footer, FloatingEnquiry
-│   ├── sections/    Hero, Stats, Sports, Rankings, Voices, Visitors,
-│   │                Awards, Parents, Enquiry
-│   └── animation/   CustomCursor, ScrollProgress, ThemeToggle, Reveal, CountUp
-├── hooks/           useTheme, useFinePointer, useActiveSection
-├── services/        submitEnquiry.js (the one place to plug in a real API)
-├── data/            content.js (all copy, links and image references)
-├── styles/          index.css (brand tokens, base styles, keyframes)
+│   ├── sections/    Main homepage sections
+│   └── animation/   Cursor, reveal, progress, theme, counters
+├── hooks/           Reusable React hooks
+├── services/        Enquiry submission integration point
+├── data/            Centralized copy and content data
+├── styles/          Global styles and design tokens
 ├── App.jsx          Page composition
-└── main.jsx         Entry point
-public/images/       Local hero and sports photos (WebP)
+└── main.jsx         Application entry point
+
+public/
+└── images/          Local WebP image assets
 ```
 
-Sections are presentational; all copy lives in `data/content.js`.
+The project keeps page composition, reusable UI, hooks, animation logic, content data, and service integration separate so individual parts remain easier to maintain and explain.
 
-## Installation
+---
 
-Requires Node.js 18+.
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18 or later
+- npm
+
+### Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/yash4579/tis-homepage-redesign.git
 cd tis-homepage-redesign
+```
+
+### Install dependencies
+
+```bash
 npm install
+```
+
+### Start the development server
+
+```bash
 npm run dev
 ```
 
-Open http://localhost:5173.
+Open the local Vite URL shown in the terminal, normally:
 
-## Production Build
-
-```bash
-npm run build     # output in dist/
-npm run preview   # serve the production build locally
+```text
+http://localhost:5173
 ```
 
-## Deployment (Vercel)
+---
 
-1. Push the repository to GitHub (public).
-2. On [vercel.com](https://vercel.com) choose **Add New → Project** and import the repository.
-3. Vercel detects Vite automatically (build command `npm run build`, output directory `dist`). Click **Deploy**.
-4. Copy the live URL into the **Live demo** line at the top of this file.
+## 🏗️ Production Build
 
-Netlify works the same way (build `npm run build`, publish directory `dist`).
+Create the production build:
 
-## Submission
-- **Google Form Submission Link:** [https://forms.gle/1njGvsG8a2MW8cRR7](https://forms.gle/1njGvsG8a2MW8cRR7)
-- **Timeframe:** 3–4 Days
-- **Deliverables:** Public GitHub Repository Link + Deployed Live Link (Vercel / Netlify / GitHub Pages)
+```bash
+npm run build
+```
 
-## Notes
+Preview the production build locally:
 
-- **The enquiry form is a front-end prototype.** It validates input but sends nothing. To connect a backend, edit `src/services/submitEnquiry.js` (an example `fetch` is in the comments); the form already handles the sending and error states.
-- Hero and most sports photos are stored in `public/images/`. The other images (people, awards, reviews, logos, six sports) and the parent videos load from tis.edu.in. A remote image that fails to load hides itself (sports show a name card instead). To host one yourself, save it in `public/images/` and use `local('file-name')` in `src/data/content.js`.
+```bash
+npm run preview
+```
+
+The production output is generated in:
+
+```text
+dist/
+```
+
+---
+
+## ☁️ Deployment — Vercel
+
+This project is deployed on **Vercel** from the public GitHub repository.
+
+### Vercel settings
+
+```text
+Framework Preset: Vite
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+Root Directory: ./
+```
+
+### Live deployment
+
+https://tis-school-redesign.vercel.app
+
+Future changes pushed to the `main` branch can be deployed through the connected Vercel project.
+
+---
+
+## 📱 Responsive Design
+
+The homepage is designed for:
+
+- **375px** — Mobile
+- **768px** — Tablet
+- **1280px+** — Desktop
+
+The layout adapts navigation, grids, carousels, media, forms, typography, and spacing for smaller screens.
+
+---
+
+## ♿ Accessibility
+
+The project includes:
+
+- Semantic HTML landmarks
+- Accessible form labels
+- Keyboard navigation and focus states
+- Appropriate ARIA attributes
+- Touch-friendly controls
+- Reduced-motion support
+- Custom cursor disabled for coarse/touch pointers
+- Native text caret preserved in form controls
+
+---
+
+## 📝 Enquiry Form
+
+The enquiry form is implemented as a **frontend prototype** for the assignment.
+
+It includes:
+
+- Three-step interaction
+- Required-field validation
+- Inline error messages
+- Focus management
+- Sending/error states
+- Success state
+
+No backend service is connected. The integration point is:
+
+```text
+src/services/submitEnquiry.js
+```
+
+A real admissions API or form service can be connected there without changing the form's UI flow.
+
+---
+
+## 🎨 Design Approach
+
+The redesign keeps the TIS-inspired visual direction while improving:
+
+- Visual hierarchy
+- Calls to action
+- Micro-interactions
+- Scroll-based storytelling
+- Content discoverability
+- Responsive behavior
+- Accessibility
+
+The page uses a combination of dark sections, crimson/teal/gold accents, large typography, imagery, and animated transitions to create a premium school landing-page experience.
+
+---
+
+## 📋 Assignment Deliverables
+
+- **Public GitHub Repository:** https://github.com/yash4579/tis-homepage-redesign
+- **Live Deployment:** https://tis-school-redesign.vercel.app
+- **Submission Form:** https://forms.gle/1njGvsG8a2MW8cRR7
+
+---
+
+## 👤 Repository
+
+**GitHub:** https://github.com/yash4579/tis-homepage-redesign
+
