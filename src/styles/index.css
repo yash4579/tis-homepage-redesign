@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TIS brand tokens (RGB triplets so Tailwind opacity modifiers work) */
+:root {
+  --bg: 255 255 255;
+  --fg: 28 28 28;
+  --card: 245 243 238;
+  --muted: 92 92 92;
+  --line: 28 28 28;
+  --brand: 184 0 37;      /* TIS crimson */
+  --brandfg: 255 255 255;
+  --brandtext: 184 0 37;  /* crimson used as text colour */
+  --teal: 123 202 196;
+  --gold: 200 164 92;
+  --ink: 31 10 16;        /* deep wine for dark bands */
+}
+.dark {
+  --bg: 22 14 16;
+  --fg: 244 240 238;
+  --card: 36 24 27;
+  --muted: 182 172 170;
+  --line: 244 240 238;
+  --brandtext: 255 128 146;
+  --ink: 12 6 8;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+  body { @apply bg-bg font-body text-fg antialiased transition-colors duration-500; }
+  :focus-visible { outline: 2px solid rgb(var(--fg)); outline-offset: 2px; box-shadow: 0 0 0 5px rgb(var(--bg)); }
+  /* Custom cursor only on fine pointers (class set from CustomCursor.jsx) */
+  .has-cursor, .has-cursor * { cursor: none !important; }
+  .has-cursor input, .has-cursor select, .has-cursor textarea { cursor: auto !important; }
+}
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+@keyframes orbit { to { transform: rotate(360deg); } }
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-orbit { animation: orbit 30s linear infinite; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-marquee, .animate-orbit { animation: none; }
+  .marquee-wrap { overflow-x: auto; } /* still reachable by scrolling */
+}
